@@ -1,0 +1,52 @@
+DOTFILES="$HOME/.dotfiles"
+pushd "$DOTFILES/zsh" > /dev/null
+
+# prompt
+PROMPT="%{%F{magenta}%}%n%{%f%}@%{%F{red}%}%m%{%f%} %{%F{blue}%}%~%{%f%} %# "
+# end prompt
+
+# history configuration
+if [ -z "$HISTFILE" ]; then
+    HISTFILE=$HOME/.zsh_history
+fi
+
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
+
+#end history
+
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# plugins
+# autosuggest
+source zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
+bindkey '^n' autosuggest-accept
+
+# end plugins
+
+# aliases
+alias ..="cd .."
+alias ...="cd ../.."
+
+# alias with a space in front so that it doesn't get added to the history
+alias cd=" cd"
+alias ls=" ls"
+
+alias l="ls"
+alias git="hub"
+alias g="git"
+# end aliases
+
+popd > /dev/null
