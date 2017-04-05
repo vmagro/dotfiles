@@ -47,6 +47,8 @@ alias ls=" ls"
 alias l="ls"
 alias git="hub"
 alias g="git"
+
+alias vim="mvim -v"
 # end aliases
 
 popd > /dev/null
