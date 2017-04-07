@@ -15,6 +15,9 @@ if [[ ! -a "$HOME/.vimrc" ]]; then
   ln -s "$DOTFILES/vimrc" "$HOME/.vimrc"
   vim +PluginInstall +qall
   cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
+  mkdir -p ~/.vim/swapfiles
 fi
 
-git config --global alias.log "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+if [[ ! -a "$HOME/.tmux.conf" ]]; then
+  ln -s "$DOTFILES/tmux.conf" "$HOME/.tmux.conf"
+fi
