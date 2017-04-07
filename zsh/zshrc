@@ -50,6 +50,9 @@ alias g="git"
 
 alias vim="mvim -v"
 alias :q="exit"
+alias :Q="exit"
+
+git config --global alias.log "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # end aliases
 
 popd > /dev/null
