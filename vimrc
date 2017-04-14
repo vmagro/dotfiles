@@ -16,6 +16,8 @@ Plugin 'Valloric/YouCompleteMe' " good autocomplete
 Plugin 'christoomey/vim-tmux-navigator' " tmux navigation integration
 Plugin 'tpope/vim-commentary' " (un)comment stuff
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-surround' " surround commands
+Plugin 'gioele/vim-autoswap' " saner swap file handling
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,6 +47,8 @@ if &term =~ '^screen'
   set ttymouse=xterm2 " need this for resizable splits
 endif
 
+set clipboard=unnamed " use system clipboard by default
+
 set laststatus=2 " always show status line
 
 
@@ -65,6 +69,10 @@ set foldmethod=indent
 nnoremap j gj
 nnoremap k gk
 
+" better file tab completition
+set wildmode=longest,list,full
+set wildmenu
+
 let mapleader="," " leader is comma
 nnoremap <leader>u :GundoToggle<CR> " <leader>u opens gundo
 
@@ -75,3 +83,4 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " backup in separate directory
 set directory=$HOME/.vim/swapfiles//
+let g:autoswap_detect_tmux = 1 " enable autoswap to switch tmux panes
