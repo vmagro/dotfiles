@@ -22,11 +22,14 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
-#end history
+# end history
 
 # vim mode
 bindkey -v
 export KEYTIMEOUT=1
+
+# make things use vim (aka mvim) by default
+export EDITOR=vim
 
 # plugins
 # autosuggest
