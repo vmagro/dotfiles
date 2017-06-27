@@ -10,7 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'altercation/Vim-colors-solarized' " solarized dark color theme
 Plugin 'tpope/vim-fugitive' " vim git commands
-Plugin 'kien/ctrlp.vim' " fuzzy file search
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'sjl/gundo.vim' " undo tree visualizer
 Plugin 'Valloric/YouCompleteMe' " good autocomplete
 Plugin 'christoomey/vim-tmux-navigator' " tmux navigation integration
@@ -18,6 +18,9 @@ Plugin 'tpope/vim-commentary' " (un)comment stuff
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-surround' " surround commands
 Plugin 'gioele/vim-autoswap' " saner swap file handling
+Plugin 'vivien/vim-linux-coding-style' " linux coding style enforcement
+Plugin 'rdnetto/YCM-Generator' " YCM in non-cmake environments
+Plugin 'python-mode/python-mode' " better python
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,8 +59,10 @@ set lazyredraw " redraw only when we need to.
 set showmatch " highlight matching [{()}]
 
 set incsearch " search without presssing enter
-set hlsearch " highlight search matches
-nnoremap <CR> :noh<CR><CR> " clear search highlight on enter
+" set hlsearch " highlight search matches
+" nnoremap <CR> :noh<CR><CR> " clear search highlight on enter
+set ignorecase " case insensitive by default
+set smartcase " do case sensitive if using upper case
 
 set foldenable " enable folding
 set foldlevelstart=4
@@ -69,6 +74,10 @@ set foldmethod=indent
 nnoremap j gj
 nnoremap k gk
 
+" nicer window movement keys
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+
 " better file tab completition
 set wildmode=longest,list,full
 set wildmenu
@@ -79,8 +88,42 @@ nnoremap <leader>u :GundoToggle<CR> " <leader>u opens gundo
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|o|dll|DS_Store)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_use_caching=1
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_max_files=0
 
 " backup in separate directory
 set directory=$HOME/.vim/swapfiles//
 let g:autoswap_detect_tmux = 1 " enable autoswap to switch tmux panes
+
+set cc=80
+set tw=0
+
+" python
+" close documentation window automatically
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+let g:syntastic_python_pyflakes_exec = "pyflakes3"
+" let g:pymode_python = "python3"
+" rope makes completion super slow
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
+
+" enable ycm in non-cmake cases
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+set shortmess+=c " fix user defined error
+" youcompleteme @ fb
+let g:ycm_python_binary_path = '/usr/local/fbcode/gcc-5-glibc-2.23/bin/python2.7'
+
+" fb filetypes
+augroup filetypedetect
+  au BufRead,BufNewFile *.cinc setfiletype python
+  au BufRead,BufNewFile *.cconf setfiletype python
+augroup END
