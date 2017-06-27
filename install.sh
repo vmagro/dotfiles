@@ -10,6 +10,10 @@ if [[ ! -a "$HOME/.zshrc" ]]; then
   ln -s "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 fi
 
+if [[ ! -a "$HOME/.zshrc.local" ]]; then
+  ln -s "$DOTFILES/zsh/zshrc.local" "$HOME/.zshrc.local"
+fi
+
 if [[ ! -a "$HOME/.vimrc" ]]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   ln -s "$DOTFILES/vimrc" "$HOME/.vimrc"

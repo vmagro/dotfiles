@@ -22,6 +22,8 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
+setopt autonamedirs # new tmux panes will keep the same shortened path
+
 # end history
 
 # vim mode
@@ -49,18 +51,15 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # end search history
 
 # aliases
+# make aliases work with sudo
+alias sudo="sudo "
+
 alias ..="cd .."
 alias ...="cd ../.."
 
-# alias with a space in front so that it doesn't get added to the history
-alias cd=" cd"
-alias ls=" ls"
-
 alias l="ls"
-alias git="hub"
 alias g="git"
 
-alias vim="mvim -v"
 alias :q="exit"
 alias :Q="exit"
 
@@ -68,3 +67,7 @@ git config --global alias.log "log --color --graph --pretty=format:'%Cred%h%Cres
 # end aliases
 
 popd > /dev/null
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
