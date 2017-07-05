@@ -21,6 +21,7 @@ Plugin 'gioele/vim-autoswap' " saner swap file handling
 Plugin 'vivien/vim-linux-coding-style' " linux coding style enforcement
 Plugin 'rdnetto/YCM-Generator' " YCM in non-cmake environments
 Plugin 'python-mode/python-mode' " better python
+Plugin 'solarnz/thrift.vim' " syntax highlighting for thrift
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
