@@ -90,7 +90,7 @@ nnoremap <leader>u :GundoToggle<CR> " <leader>u opens gundo
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '__pycache__|\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|o|dll|DS_Store)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -98,6 +98,20 @@ let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_max_depth=40
 let g:ctrlp_max_files=0
+let g:ctrlp_working_path_mode=0 " ctrlp only in vim cwd
+
+" The Silver Searcher (faster than grep)
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 
 " backup in separate directory
 set directory=$HOME/.vim/swapfiles//
