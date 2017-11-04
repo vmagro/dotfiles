@@ -12,14 +12,12 @@ Plugin 'altercation/Vim-colors-solarized' " solarized dark color theme
 Plugin 'tpope/vim-fugitive' " vim git commands
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plugin 'sjl/gundo.vim' " undo tree visualizer
-Plugin 'Valloric/YouCompleteMe' " good autocomplete
 Plugin 'christoomey/vim-tmux-navigator' " tmux navigation integration
 Plugin 'tpope/vim-commentary' " (un)comment stuff
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-surround' " surround commands
 Plugin 'gioele/vim-autoswap' " saner swap file handling
 Plugin 'vivien/vim-linux-coding-style' " linux coding style enforcement
-Plugin 'rdnetto/YCM-Generator' " YCM in non-cmake environments
 Plugin 'python-mode/python-mode' " better python
 Plugin 'solarnz/thrift.vim' " syntax highlighting for thrift
 
