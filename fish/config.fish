@@ -1,4 +1,6 @@
 set EDITOR vim
 
 set -x GOPATH $HOME/Developer/go
-set -U fish_user_paths $GOPATH/bin/ $fish_user_paths
+set PATH $HOME/bin $GOPATH/bin $PATH
+
+alias :q=exit
