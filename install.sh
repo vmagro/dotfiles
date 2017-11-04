@@ -6,12 +6,8 @@ pushd `dirname $0` > /dev/null
 DOTFILES=`pwd`
 popd > /dev/null
 
-if [[ ! -a "$HOME/.zshrc" ]]; then
-  ln -s "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
-fi
-
-if [[ ! -a "$HOME/.zshrc.local" ]]; then
-  ln -s "$DOTFILES/zsh/zshrc.local" "$HOME/.zshrc.local"
+if [[ ! -a "$HOME/.config/fish" ]]; then
+  ln -s "$DOTFILES/fish" "$HOME/.config/fish"
 fi
 
 if [[ ! -a "$HOME/.vimrc" ]]; then
