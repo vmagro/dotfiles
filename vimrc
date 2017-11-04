@@ -124,8 +124,8 @@ set tw=0
 " close documentation window automatically
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-let g:syntastic_python_pyflakes_exec = "pyflakes3"
 " let g:pymode_python = "python3"
+let g:pymode_lint_checker = "pyflakes"
 " rope makes completion super slow
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_complete_on_dot = 0
