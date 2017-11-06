@@ -14,12 +14,17 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'iCyMind/NeoSolarized' " solarized color scheme
 
 " python tools
-" autcomplete
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi' " autocomplete
 
 " golang tools
 Plug 'fatih/vim-go'
 Plug 'godoctor/godoctor.vim'
+
+
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy file search
+Plug 'tpope/vim-commentary' " (un)comment stuff
+Plug 'tpope/vim-surround' " surround commands (ysiw etc)
+Plug 'gioele/vim-autoswap' " saner swap file handling - switch to open version
 
 " Initialize plugin system
 call plug#end()
