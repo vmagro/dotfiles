@@ -1,3 +1,4 @@
+alias vim=nvim
 set EDITOR vim
 
 set -x GOPATH $HOME/Developer/go
