@@ -42,6 +42,12 @@ syntax enable
 set background=dark
 colorscheme NeoSolarized
 
+" tabs suck, use spaces instead
+set tabstop=2
+set shiftwidth=2
+set expandtab
+filetype plugin indent on
+
 
 " Start deoplete
 
