@@ -10,12 +10,10 @@ if [[ ! -a "$HOME/.config/fish" ]]; then
   ln -s "$DOTFILES/fish" "$HOME/.config/fish"
 fi
 
-if [[ ! -a "$HOME/.vimrc" ]]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  ln -s "$DOTFILES/vimrc" "$HOME/.vimrc"
-  vim +PluginInstall +qall
-  cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
-  mkdir -p ~/.vim/swapfiles
+if [[ ! -a "$HOME/.config/nvim" ]]; then
+  ln -s "$DOTFILES/nvim" "$HOME/.config/nvim"
+  nvim +PlugInstall +qall
+  nvim +UpdateRemotePlugins +qall
 fi
 
 if [[ ! -a "$HOME/.tmux.conf" ]]; then
