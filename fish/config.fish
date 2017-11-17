@@ -1,5 +1,6 @@
 alias vim=nvim
-set EDITOR vim
+set EDITOR nvim
+set VISUAL nvim
 
 set -x GOPATH $HOME/Developer/go
 set PATH $HOME/bin $GOPATH/bin $PATH
