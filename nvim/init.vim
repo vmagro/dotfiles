@@ -21,7 +21,6 @@ Plug 'fatih/vim-go'
 Plug 'godoctor/godoctor.vim'
 
 Plug 'vim-airline/vim-airline' " cool airline status bar at bottom
-Plug 'airblade/vim-gitgutter' " git diffs in gutter
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plug 'tpope/vim-commentary' " (un)comment stuff
 Plug 'tpope/vim-surround' " surround commands (ysiw etc)
