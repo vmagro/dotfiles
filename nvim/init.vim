@@ -48,6 +48,9 @@ set shiftwidth=2
 set expandtab
 filetype plugin indent on
 
+" hit enter to stop search highlight
+nnoremap <CR> :noh<CR><CR>
+
 
 " Start deoplete
 
