@@ -21,7 +21,6 @@ Plug 'fatih/vim-go'
 Plug 'godoctor/godoctor.vim'
 
 Plug 'vim-airline/vim-airline' " cool airline status bar at bottom
-Plug 'airblade/vim-gitgutter' " git diffs in gutter
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plug 'tpope/vim-commentary' " (un)comment stuff
 Plug 'tpope/vim-surround' " surround commands (ysiw etc)
@@ -48,6 +47,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 filetype plugin indent on
+
+" hit enter to stop search highlight
+nnoremap <CR> :noh<CR><CR>
 
 
 " Start deoplete
