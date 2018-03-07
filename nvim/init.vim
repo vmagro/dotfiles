@@ -56,7 +56,7 @@ nnoremap <CR> :noh<CR><CR>
 
 " tell deoplete about python
 let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/bin/python3.4'
 
 " Let <Tab> also do completion
 inoremap <silent><expr> <Tab>  pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()

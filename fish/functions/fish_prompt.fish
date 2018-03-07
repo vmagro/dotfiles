@@ -22,7 +22,7 @@ function fish_prompt --description 'Write out the prompt'
             set suffix '›'
     end
 
-    echo -n -s @ (prompt_hostname) ' ' (set_color $color_cwd) (prompt_pwd) " " (set_color normal)
+    echo -n -s (set_color $color_cwd) (prompt_pwd) " " (set_color normal)
 
     __informative_git_prompt
 
