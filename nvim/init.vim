@@ -11,7 +11,7 @@ Plug 'neomake/neomake'
 Plug 'christoomey/vim-tmux-navigator'
 
 " ui related plugins
-Plug 'iCyMind/NeoSolarized' " solarized color scheme
+Plug 'agude/vim-eldar'
 
 " python tools
 Plug 'zchee/deoplete-jedi' " autocomplete
@@ -42,11 +42,9 @@ set number " show curent line number absolute not relative
 set cursorline " highlight current line
 
 syntax enable
-
-" enable solarized dark
-" set termguicolors - this breaks (I think because of my iterm colorscheme)
-set background=dark
-colorscheme NeoSolarized
+"- this breaks (I think because of my iterm colorscheme)
+"set termguicolors 
+colorscheme eldar
 
 " tabs suck, use spaces instead
 set tabstop=2
