@@ -26,6 +26,12 @@ Plug 'tpope/vim-commentary' " (un)comment stuff
 Plug 'tpope/vim-surround' " surround commands (ysiw etc)
 Plug 'gioele/vim-autoswap' " saner swap file handling - switch to open version
 
+" nicer terminal plugins to make neovim replace tmux
+Plug 'mklabs/split-term.vim'
+
+" ctags plugin
+Plug 'ludovicchabant/vim-gutentags'
+
 " Initialize plugin system
 call plug#end()
 
@@ -55,8 +61,7 @@ nnoremap <CR> :noh<CR><CR>
 " Start deoplete
 
 " tell deoplete about python
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/bin/python3.4'
+let g:python3_host_prog = '/home/vmagro/virtualenvs/py3neovim/bin/python3.6'
 
 " Let <Tab> also do completion
 inoremap <silent><expr> <Tab>  pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
@@ -79,15 +84,27 @@ call neomake#configure#automake('nw', 750)
 " When reading a buffer (after 1s), and when writing.
 call neomake#configure#automake('rw', 1000)
 
+" set gutentag to use exctags instead of ctags
+if executable('exctags')
+  let g:gutentags_ctags_executable = 'exctags'
+endif
 
-" make ctrlp faster with ag
-if executable('ag')		
-  " Use ag over grep		
-  set grepprg=ag\ --nogroup\ --nocolor		
+
+" make ctrlp faster with ripgrep
+if executable('rg')		
+  " Use rg over grep		
+  set grepprg=rg\ --color=never
   	
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore		
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'		
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore		
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
   	
-  " ag is fast enough that CtrlP doesn't need to cache		
+  " rg is fast enough that CtrlP doesn't need to cache		
   let g:ctrlp_use_caching = 0		
 endif
+
+" FB specific
+" set configs to use python syntax
+autocmd BufNewFile,BufRead *.cconf set syntax=python
+" set BUCK to use python syntax
+autocmd BufNewFile,BufRead BUCK set syntax=python
+autocmd BufNewFile,BufRead TARGETS set syntax=python
