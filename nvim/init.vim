@@ -32,6 +32,9 @@ Plug 'mklabs/split-term.vim'
 " ctags plugin
 Plug 'ludovicchabant/vim-gutentags'
 
+" fish editor
+Plug 'dag/vim-fish'
+
 " Initialize plugin system
 call plug#end()
 
