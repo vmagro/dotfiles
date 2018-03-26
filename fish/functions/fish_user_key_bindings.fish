@@ -1,3 +1,5 @@
 function fish_user_key_bindings --description 'custom key bindings.'
-  bind \cN accept-autosuggestion
+  for mode in insert default visual
+    bind -M $mode \cN forward-char
+  end
 end
