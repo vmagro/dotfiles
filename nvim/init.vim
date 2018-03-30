@@ -106,6 +106,8 @@ endif
 " FB specific
 " set configs to use python syntax
 autocmd BufNewFile,BufRead *.cconf set syntax=python
+autocmd BufNewFile,BufRead *.cinc set syntax=python
+autocmd BufNewFile,BufRead *.mcconf set syntax=python
 " set BUCK to use python syntax
 autocmd BufNewFile,BufRead BUCK set syntax=python
 autocmd BufNewFile,BufRead TARGETS set syntax=python
