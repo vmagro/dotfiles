@@ -21,10 +21,13 @@ Plug 'fatih/vim-go'
 Plug 'godoctor/godoctor.vim'
 
 Plug 'vim-airline/vim-airline' " cool airline status bar at bottom
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy file search
 Plug 'tpope/vim-commentary' " (un)comment stuff
 Plug 'tpope/vim-surround' " surround commands (ysiw etc)
 Plug 'gioele/vim-autoswap' " saner swap file handling - switch to open version
+
+" fuzzy file search
+Plug 'junegunn/fzf.vim'
+Plug '~/go/src/github.com/junegunn/fzf'
 
 " nicer terminal plugins to make neovim replace tmux
 Plug 'mklabs/split-term.vim'
@@ -108,6 +111,7 @@ endif
 autocmd BufNewFile,BufRead *.cconf set syntax=python
 autocmd BufNewFile,BufRead *.cinc set syntax=python
 autocmd BufNewFile,BufRead *.mcconf set syntax=python
+autocmd BufNewFile,BufRead *.tw set syntax=python
 " set BUCK to use python syntax
 autocmd BufNewFile,BufRead BUCK set syntax=python
 autocmd BufNewFile,BufRead TARGETS set syntax=python
