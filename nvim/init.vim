@@ -66,6 +66,18 @@ nnoremap <CR> :noh<CR><CR>
 
 " tell deoplete about python
 let g:python3_host_prog = '/home/vmagro/virtualenvs/py3neovim/bin/python3.6'
+" use flake8 from virtualenv
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = {
+  \ 'exe': '/home/vmagro/virtualenvs/py3neovim/bin/flake8',
+  \ 'args': ['--format=default'],
+  \ 'errorformat':
+      \ '%E%f:%l: could not compile,%-Z%p^,' .
+      \ '%A%f:%l:%c: %t%n %m,' .
+      \ '%A%f:%l: %t%n %m,' .
+      \ '%-G%.%#',
+  \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+  \ }
 
 " Let <Tab> also do completion
 inoremap <silent><expr> <Tab>  pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
