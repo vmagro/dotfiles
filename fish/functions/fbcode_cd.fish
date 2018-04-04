@@ -5,6 +5,12 @@ function fbcode_cd --on-variable PWD
   case "/data/users/vmagro/fbsource/fbcode*"
     set -l path (string replace "/data/users/vmagro/fbsource/fbcode" "$HOME/fbcode" (pwd))
     cd $path
+  case "/data/users/vmagro/configerator-hg*"
+    set -l path (string replace "/data/users/vmagro/configerator-hg" "$HOME/configerator" (pwd))
+    cd $path
+  case "/data/users/vmagro/www-hg*"
+    set -l path (string replace "/data/users/vmagro/www-hg" "$HOME/www" (pwd))
+    cd $path
   end
 end
 
