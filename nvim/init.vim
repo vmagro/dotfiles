@@ -32,9 +32,6 @@ Plug '~/go/src/github.com/junegunn/fzf'
 " nicer terminal plugins to make neovim replace tmux
 Plug 'mklabs/split-term.vim'
 
-" ctags plugin
-Plug 'ludovicchabant/vim-gutentags'
-
 " fish editor
 Plug 'dag/vim-fish'
 
@@ -99,11 +96,6 @@ call neomake#configure#automake('w')
 call neomake#configure#automake('nw', 750)
 " When reading a buffer (after 1s), and when writing.
 call neomake#configure#automake('rw', 1000)
-
-" set gutentag to use exctags instead of ctags
-if executable('exctags')
-  let g:gutentags_ctags_executable = 'exctags'
-endif
 
 
 " make ctrlp faster with ripgrep
