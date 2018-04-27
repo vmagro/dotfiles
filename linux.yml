@@ -1,14 +1,13 @@
 - hosts: localhost
   tasks:
-  - name: selinux permissive
+  - name: disable selinux
     block:
       - name: install libselinux
         package:
           name: libselinux-python
-      - name: selinux permissive
+      - name: disable selinux
         selinux:
-          policy: targeted
-          state: permissive
+          state: disabled
   - name: install development packages
     package: name={{item}}
     with_items:
