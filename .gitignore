@@ -1,2 +1,3 @@
 zsh/zshrc.local
 nvim/.netrwhist
+*.retry
