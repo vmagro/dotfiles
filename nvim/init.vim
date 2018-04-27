@@ -47,7 +47,8 @@ set cursorline " highlight current line
 syntax enable
 "- this breaks (I think because of my iterm colorscheme)
 "set termguicolors 
-colorscheme eldar
+"silent! to allow non-interactive installation of plugins
+silent! colorscheme eldar
 
 " tabs suck, use spaces instead
 set tabstop=2
@@ -91,11 +92,11 @@ let g:deoplete#enable_at_startup = 1
 
 " enable neomake automatic operation
 " When writing a buffer.
-call neomake#configure#automake('w')
+silent! call neomake#configure#automake('w')
 " When writing a buffer, and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
+silent! call neomake#configure#automake('nw', 750)
 " When reading a buffer (after 1s), and when writing.
-call neomake#configure#automake('rw', 1000)
+silent! call neomake#configure#automake('rw', 1000)
 
 
 " make ctrlp faster with ripgrep
