@@ -8,13 +8,25 @@
       - name: disable selinux
         selinux:
           state: disabled
+  - name: enable rpmfusion
+    dnf:
+      name: '{{ item }}'
+      state: present
+    with_items:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-27.noarch.rpm
+      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-27.noarch.rpm
   - name: install useful packages
-    package: name={{item}}
+    package:
+      name: '{{ item }}'
+      state: present
     with_items:
       - thunderbird
       - firefox
+      - ffmpeg
   - name: install development packages
-    package: name={{ item }}
+    package:
+      name: '{{ item }}'
+      state: present
     with_items:
       - tmux
       - neovim
