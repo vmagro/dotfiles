@@ -12,7 +12,6 @@
         group: vmagro
         state: directory
         recurse: yes
-        mode: 0755
 
 - name: git author config
   block:
