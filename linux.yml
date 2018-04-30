@@ -41,6 +41,7 @@
       - mosh
       - fish
       - atom
+      - docker
   - name: install spotify
     block:
       - name: install snapd
