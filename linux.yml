@@ -30,8 +30,9 @@
           name: snapd
       - name: install spotify
         command: snap install spotify creates=/var/lib/snapd/snap/bin/spotify
-  - import_tasks: dotfiles.yml
   - name: install yarn
     npm:
       name: yarn
       global: yes
+  - import_tasks: dotfiles.yml
+  - import_tasks: fonts.yml
