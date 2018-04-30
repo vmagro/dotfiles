@@ -9,7 +9,7 @@
         selinux:
           state: disabled
   - name: install development packages
-    package: name={{item}}
+    package: name={{ item }}
     with_items:
       - tmux
       - neovim
@@ -23,6 +23,7 @@
       - npm
       - mosh
       - fish
+      - atom
   - name: install spotify
     block:
       - name: install snapd
