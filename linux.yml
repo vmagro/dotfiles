@@ -8,6 +8,11 @@
       - name: disable selinux
         selinux:
           state: disabled
+  - name: install useful packages
+    package: name={{item}}
+    with_items:
+      - thunderbird
+      - firefox
   - name: install development packages
     package: name={{item}}
     with_items:
