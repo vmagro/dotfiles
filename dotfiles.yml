@@ -36,6 +36,7 @@
   with_items:
     - { src: 'nvim/', dst: '.config/nvim' }
     - { src: 'fish/', dst: '.config/fish' }
+    - { src: 'awesome/', dst: '.config/awesome' }
     - { src: 'tmux.conf', dst: '.tmux.conf' }
 
 - name: install vimplug
