@@ -42,6 +42,7 @@
       - fish
       - atom
       - docker
+      - cmake
   - name: install spotify
     block:
       - name: install snapd
