@@ -44,8 +44,9 @@ end
 beautiful.init(gears.filesystem.get_dir("config") .. "/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "vi"
+-- TODO: find something other than gnome-terminal because this is gross
+terminal = "gnome-terminal"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
