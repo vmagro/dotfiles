@@ -55,4 +55,4 @@
       name: yarn
       global: yes
   - import_tasks: dotfiles.yml
-  - import_tasks: fonts.yml
+- import_playbook: fonts.yml
