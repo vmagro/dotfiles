@@ -37,7 +37,6 @@
     - { src: 'nvim/', dst: '.config/nvim' }
     - { src: 'fish/', dst: '.config/fish' }
     - { src: 'awesome/', dst: '.config/awesome' }
-    - { src: 'polybar/', dst: '.config/polybar' }
     - { src: 'tmux.conf', dst: '.tmux.conf' }
 
 - name: install vimplug
