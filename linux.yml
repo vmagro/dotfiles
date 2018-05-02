@@ -16,7 +16,7 @@
       - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-27.noarch.rpm
       - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-27.noarch.rpm
   - name: install useful packages
-    package:
+    dnf:
       name: '{{ item }}'
       state: present
     with_items:
@@ -24,7 +24,7 @@
       - firefox
       - ffmpeg
   - name: install development packages
-    package:
+    dnf:
       name: '{{ item }}'
       state: present
     with_items:
@@ -46,7 +46,7 @@
   - name: install spotify
     block:
       - name: install snapd
-        package:
+        dnf:
           name: snapd
       - name: install spotify
         command: snap install spotify creates=/var/lib/snapd/snap/bin/spotify
