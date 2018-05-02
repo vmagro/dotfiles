@@ -20,7 +20,7 @@
         scope: global
         name: user.email
         value: v@vinn.ie
-    - name: git email
+    - name: git name
       git_config:
         scope: global
         name: user.name
