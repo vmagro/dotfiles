@@ -23,6 +23,9 @@
       - thunderbird
       - firefox
       - ffmpeg
+      - xscreensaver
+      - vlc
+      - lightdm
   - name: install development packages
     dnf:
       name: '{{ item }}'
