@@ -1,0 +1,2 @@
+xmodmap ~/.Xmodmap
+pulseaudio --start

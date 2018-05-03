@@ -38,6 +38,8 @@
     - { src: 'fish/', dst: '.config/fish' }
     - { src: 'awesome/', dst: '.config/awesome' }
     - { src: 'tmux.conf', dst: '.tmux.conf' }
+    - { src: 'xinitrc', dst: '.xinitrc' }
+    - { src: 'Xmodmap', dst: '.Xmodmap' }
 
 - name: install vimplug
   become: true
