@@ -24,7 +24,14 @@
       - firefox
       - ffmpeg
       - vlc
+  - name: install ui packages
+    dnf:
+      name: '{{ item }}'
+      state: present
+    with_items:
       - lightdm
+      - awesome
+      - adapta-gtk-theme
   - name: install development packages
     dnf:
       name: '{{ item }}'
