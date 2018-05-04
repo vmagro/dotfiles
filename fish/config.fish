@@ -5,7 +5,7 @@ set VISUAL nvim
 fish_vi_key_bindings
 
 set -x GOPATH $HOME/go
-set PATH /usr/local/sbin $PATH
+set PATH /usr/local/sbin /sbin $PATH
 set PATH /var/lib/snapd/snap/bin $PATH
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/bin $PATH
