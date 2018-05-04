@@ -18,6 +18,10 @@
       - Regular
       - Retina
     notify: refresh font cache
+  - name: Install Roboto
+    dnf:
+      name: google-roboto-fonts
+      state: present
   handlers:
   - name: refresh font cache
     command: fc-cache -f
