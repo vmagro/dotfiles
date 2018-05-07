@@ -32,6 +32,7 @@
       - lightdm
       - awesome
       - adapta-gtk-theme
+      - light-locker
   - name: install development packages
     dnf:
       name: '{{ item }}'
