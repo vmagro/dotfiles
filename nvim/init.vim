@@ -111,6 +111,9 @@ if executable('rg')
   let g:ctrlp_use_caching = 0		
 endif
 
+" make fzf use watchman which gives a huge speed boost
+nnoremap <silent> <c-p> :call fzf#run({'source': '~/bin/fzfwm', 'sink': 'e'})<CR>
+
 " FB specific
 " set configs to use python syntax
 autocmd BufNewFile,BufRead *.cconf set syntax=python
