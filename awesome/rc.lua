@@ -332,7 +332,14 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+   
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q sset Master 3%-") end),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q sset Master 3%+") end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
+    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("spoticli play") end),
+    awful.key({}, "XF86Forward", function () awful.util.spawn("spoticli next") end),
+    awful.key({}, "XF86Back", function () awful.util.spawn("spoticli prev") end)
 )
 
 clientkeys = gears.table.join(
