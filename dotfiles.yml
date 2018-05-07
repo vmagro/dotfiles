@@ -13,7 +13,7 @@
         state: directory
         recurse: yes
 
-- name: git author config
+- name: git config
   block:
     - name: git email
       git_config:
@@ -25,6 +25,11 @@
         scope: global
         name: user.name
         value: Vinnie Magro
+    - name: git rebase on pull
+      git_config:
+        scope: global
+        name: pull.rebase
+        value: "true"
 
 - name: dotfile symlinks
   file:
