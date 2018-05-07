@@ -11,7 +11,7 @@ local theme_path = gfs.get_configuration_dir().."themes/default/"
 
 local theme = {}
 
-theme.font          = "Roboto Light 10"
+theme.font          = "Roboto 10"
 theme.taglist_font  = "Roboto Condensed Regular 8"
 
 theme.bg_normal     = "#006db3"
