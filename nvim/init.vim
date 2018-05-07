@@ -35,6 +35,10 @@ Plug 'mklabs/split-term.vim'
 " fish editor
 Plug 'dag/vim-fish'
 
+" source control
+Plug 'jlfwong/vim-mercenary' " hg
+Plug 'tpope/vim-fugitive' " git
+
 " Initialize plugin system
 call plug#end()
 
