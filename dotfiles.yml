@@ -12,20 +12,24 @@
         group: vmagro
         state: directory
         recurse: yes
-        mode: 0755
 
-- name: git author config
+- name: git config
   block:
     - name: git email
       git_config:
         scope: global
         name: user.email
         value: v@vinn.ie
-    - name: git email
+    - name: git name
       git_config:
         scope: global
         name: user.name
         value: Vinnie Magro
+    - name: git rebase on pull
+      git_config:
+        scope: global
+        name: pull.rebase
+        value: "true"
 
 - name: dotfile symlinks
   file:
@@ -37,7 +41,11 @@
   with_items:
     - { src: 'nvim/', dst: '.config/nvim' }
     - { src: 'fish/', dst: '.config/fish' }
+    - { src: 'awesome/', dst: '.config/awesome' }
     - { src: 'tmux.conf', dst: '.tmux.conf' }
+    - { src: 'xinitrc', dst: '.xinitrc' }
+    - { src: 'Xmodmap', dst: '.Xmodmap' }
+    - { src: 'spoticli', dst: 'bin/spoticli' }
 
 - name: install vimplug
   become: true

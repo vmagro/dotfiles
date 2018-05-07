@@ -8,8 +8,35 @@
       - name: disable selinux
         selinux:
           state: disabled
+  - name: enable rpmfusion
+    dnf:
+      name: '{{ item }}'
+      state: present
+    with_items:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-27.noarch.rpm
+      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-27.noarch.rpm
+  - name: install useful packages
+    dnf:
+      name: '{{ item }}'
+      state: present
+    with_items:
+      - thunderbird
+      - firefox
+      - ffmpeg
+      - vlc
+  - name: install ui packages
+    dnf:
+      name: '{{ item }}'
+      state: present
+    with_items:
+      - lightdm
+      - awesome
+      - adapta-gtk-theme
+      - light-locker
   - name: install development packages
-    package: name={{item}}
+    dnf:
+      name: '{{ item }}'
+      state: present
     with_items:
       - tmux
       - neovim
@@ -23,15 +50,19 @@
       - npm
       - mosh
       - fish
+      - atom
+      - docker
+      - cmake
   - name: install spotify
     block:
       - name: install snapd
-        package:
+        dnf:
           name: snapd
       - name: install spotify
         command: snap install spotify creates=/var/lib/snapd/snap/bin/spotify
-  - import_tasks: dotfiles.yml
   - name: install yarn
     npm:
       name: yarn
       global: yes
+  - import_tasks: dotfiles.yml
+- import_playbook: fonts.yml
