@@ -65,4 +65,5 @@
       name: yarn
       global: yes
   - import_tasks: dotfiles.yml
+- import_playbook: systemd/playbook.yml
 - import_playbook: fonts.yml

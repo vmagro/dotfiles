@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+  - name: install unit files
+    copy:
+      src: "{{ item }}.service"
+      dest: "/etc/systemd/system/{{ item }}.service"
+      owner: root
+      group: root
+      mode: 0544
+    with_items:
+      - pulseaudio
+  - name: enable and start services
+    systemd:
+      daemon_reload: yes
+      enabled: yes
+      state: started
+      name: "{{ item }}"
+    with_items:
+      - pulseaudio
