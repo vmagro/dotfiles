@@ -563,5 +563,5 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn("xmodmap ~/.Xmodmap")
-awful.util.spawn("pulseaudio --start")
+-- remap caps -> escape, windows -> ctrl, alt -> windows
+awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win -option altwin:ctrl_win")
