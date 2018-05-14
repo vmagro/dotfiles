@@ -565,3 +565,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- remap caps -> escape, windows -> ctrl, alt -> windows
 awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win -option altwin:ctrl_win")
+-- start compton for compositing to stop tears etc
+awful.util.spawn("/usr/bin/compton -b -c --backend glx --vsync opengl-swc")
