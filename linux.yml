@@ -55,6 +55,7 @@
       - docker
       - cmake
       - mercurial
+      - ripgrep
   - name: install spotify
     block:
       - name: install snapd
