@@ -33,6 +33,7 @@
       - awesome
       - adapta-gtk-theme
       - light-locker
+      - compton
   - name: install development packages
     dnf:
       name: '{{ item }}'
@@ -53,6 +54,7 @@
       - atom
       - docker
       - cmake
+      - mercurial
   - name: install spotify
     block:
       - name: install snapd
