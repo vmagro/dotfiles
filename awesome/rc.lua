@@ -553,3 +553,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win")
 -- start compton for compositing to stop tears etc
 awful.util.spawn("/usr/bin/compton -b -c --backend glx --vsync opengl-swc")
+-- start xscreensaver for lock screen
+awful.util.spawn_with_shell("/usr/bin/xscreensaver -nosplash &")

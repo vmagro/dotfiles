@@ -34,6 +34,9 @@
       - adapta-gtk-theme
       - light-locker
       - compton
+      - xscreensaver
+      - aria2c
+      - mpv
   - name: install development packages
     dnf:
       name: '{{ item }}'
@@ -56,6 +59,7 @@
       - cmake
       - mercurial
       - ripgrep
+      - jq
   - name: install spotify
     block:
       - name: install snapd

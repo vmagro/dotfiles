@@ -1,0 +1,6 @@
+#!/bin/bash
+
+videoroot="$HOME/Aerial"
+video=$(find "$videoroot" -name "*mov" | sort --random-sort | head -1)
+
+mpv --really-quiet --no-audio --no-stop-screensaver --loop=inf --fs --wid=$XSCREENSAVER_WINDOW "$video"
