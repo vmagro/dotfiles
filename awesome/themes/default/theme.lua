@@ -126,6 +126,11 @@ theme.layout_cornerse = theme_path.."layouts/cornersew.png"
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = 'adapta'
 
+-- make notifications reasonably (read: small) sized
+theme.notification_height = 48
+theme.notification_width = 512
+theme.notification_icon_size = 48
+
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
