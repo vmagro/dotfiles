@@ -46,7 +46,6 @@
     - { src: 'xinitrc', dst: '.xinitrc' }
     - { src: 'Xmodmap', dst: '.Xmodmap' }
     - { src: 'spoticli', dst: 'bin/spoticli' }
-    - { src: 'xscreensaver', dst: '.xscreensaver' }
 
 - name: install vimplug
   become: true
