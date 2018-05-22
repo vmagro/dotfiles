@@ -1,0 +1,22 @@
+- name: create font dir
+  file:
+    path: /home/vmagro/.local/share/fonts
+    owner: vmagro
+    group: vmagro
+    state: directory
+    mode: 0750
+- name: Download Fira Code
+  get_url:
+    url: 'https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-{{ item }}.ttf?raw=true'
+    dest: '/home/vmagro/.local/share/fonts/FiraCode-{{ item }}.ttf'
+  with_items:
+    - Bold
+    - Light
+    - Medium
+    - Regular
+    - Retina
+  notify: refresh font cache
+- name: Install Roboto
+  dnf:
+    name: google-roboto-fonts
+    state: present
