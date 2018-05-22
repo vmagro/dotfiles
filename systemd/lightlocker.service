@@ -1,0 +1,11 @@
+[Unit]
+Description=light-locker lockscreen
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/light-locker
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
