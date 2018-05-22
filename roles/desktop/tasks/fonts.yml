@@ -16,7 +16,11 @@
     - Regular
     - Retina
   notify: refresh font cache
-- name: Install Roboto
+- name: Install fonts from dnf
   dnf:
-    name: google-roboto-fonts
+    name: "{{ item }}"
     state: present
+  with_items:
+    - google-roboto-fonts
+    - levien-inconsolata-fonts
+    - mozilla-fira-mono-fonts

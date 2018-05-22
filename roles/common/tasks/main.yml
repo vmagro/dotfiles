@@ -54,6 +54,7 @@
     - { src: 'tmux.conf', dst: '.tmux.conf' }
     - { src: 'xinitrc', dst: '.xinitrc' }
     - { src: 'Xmodmap', dst: '.Xmodmap' }
+    - { src: 'Xresources', dst: '.Xresources' }
     - { src: 'spoticli', dst: 'bin/spoticli' }
 
 - name: install vimplug
