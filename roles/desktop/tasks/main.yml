@@ -14,6 +14,8 @@
     - firefox
     - ffmpeg
     - vlc
+    - mplayer
+    - libvdpau-va-gl
 - name: install ui packages
   dnf:
     name: '{{ item }}'
