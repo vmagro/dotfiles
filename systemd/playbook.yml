@@ -17,6 +17,7 @@
     with_items:
       - pulseaudio
       - lightlocker
+      - xscreensaver
   - name: enable and start services
     become: yes
     become_user: vmagro
@@ -28,4 +29,4 @@
       user: yes
     with_items:
       - pulseaudio
-      - lightlocker
+      - xscreensaver
