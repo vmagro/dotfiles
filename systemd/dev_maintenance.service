@@ -1,0 +1,3 @@
+[Service]
+ExecStart=/home/vmagro/bin/dev_maintenance
+Type=oneshot
