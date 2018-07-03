@@ -1,3 +1,4 @@
 [Service]
 ExecStart=/home/vmagro/bin/dev_maintenance
 Type=oneshot
+OnFailure=status-email-vmagro@%n.service

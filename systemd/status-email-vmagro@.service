@@ -1,0 +1,8 @@
+[Unit]
+Description=status email for %i to user
+
+[Service]
+Type=oneshot
+ExecStart=/home/vmagro/bin/systemd-email vmagro@fb.com %i
+User=nobody
+Group=systemd-journal
