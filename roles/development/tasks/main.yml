@@ -24,3 +24,10 @@
   npm:
     name: yarn
     global: yes
+- name: link fzfwm
+  file:
+    src: "/home/vmagro/.dotfiles/bin/fzfwm.sh"
+    dest: "/home/vmagro/bin/fzfwm"
+    owner: vmagro
+    group: vmagro
+    state: link
