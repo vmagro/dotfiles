@@ -21,3 +21,5 @@ export EDITOR=nvim
 
 # reverse incremental search with ctrl-r
 bindkey '^R' history-incremental-search-backward
+
+alias :q=exit
