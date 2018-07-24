@@ -11,4 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+# save a lot of history
+HISTSIZE=130000 SAVEHIST=130000
+# sync history between terminals
+setopt share_history
+
 alias vim=nvim
+export EDITOR=nvim
