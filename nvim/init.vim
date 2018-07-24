@@ -67,7 +67,7 @@ nnoremap <CR> :noh<CR><CR>
 " Start deoplete
 
 " tell deoplete about python
-let g:python3_host_prog = '/Users/vmagro/virtualenvs/py3neovim/bin/python3.6'
+let g:python3_host_prog = '/home/vmagro/virtualenvs/py3neovim/bin/python3.6'
 " use flake8 from virtualenv
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_python_flake8_maker = {
