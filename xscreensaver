@@ -1,0 +1,58 @@
+# XScreenSaver Preferences File
+# Written by xscreensaver-demo 5.39 for vmagro on Tue May 15 14:30:37 2018.
+# https://www.jwz.org/xscreensaver/
+
+timeout:	1:00:00
+cycle:		0:05:00
+lock:		False
+lockTimeout:	0:00:00
+passwdTimeout:	0:00:30
+visualID:	default
+installColormap:    True
+verbose:	False
+timestamp:	True
+splash:		False
+splashDuration:	0:00:05
+demoCommand:	xscreensaver-demo
+prefsCommand:	xscreensaver-demo -prefs
+nice:		10
+memoryLimit:	0
+fade:		True
+unfade:		False
+fadeSeconds:	0:00:03
+fadeTicks:	20
+captureStderr:	False
+ignoreUninstalledPrograms:True
+font:		*-medium-r-*-140-*-m-*
+dpmsEnabled:	True
+dpmsQuickOff:	False
+dpmsStandby:	2:00:00
+dpmsSuspend:	2:00:00
+dpmsOff:	4:00:00
+grabDesktopImages:  False
+grabVideoFrames:    False
+chooseRandomImages: True
+imageDirectory:	/usr/share/backgrounds/images
+
+mode:		one
+selected:	0
+
+textMode:	file
+textLiteral:	XScreenSaver
+textFile:	/etc/fedora-release
+textProgram:	fortune -s
+textURL:	http://planet.fedoraproject.org/rss20.xml
+
+programs:								      \
+  Best: 	"Apple Aerial" 	$HOME/.dotfiles/appletv-screensaver \n\
+
+pointerPollTime:    0:00:05
+pointerHysteresis:  10
+windowCreationTimeout:0:00:30
+initialDelay:	0:00:00
+GetViewPortIsFullOfLies:False
+procInterrupts:	True
+xinputExtensionDev: False
+overlayStderr:	True
+authWarningSlack:   20
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+videoroot="$HOME/Aerial"
+
+# play the videos in a random order each time
+playlist=$(find "$videoroot" -name "*.mov" | sort --random-sort)
+
+exec mpv --really-quiet --no-audio --no-stop-screensaver --loop-playlist=inf \
+  --fs --wid=$XSCREENSAVER_WINDOW \
+  $playlist

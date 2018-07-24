@@ -1,19 +1,32 @@
 - hosts: localhost
   tasks:
+  - name: systemd user directory
+    file:
+      path: "/home/vmagro/.config/systemd/user"
+      state: directory
+      owner: vmagro
+      group: vmagro
+      mode: 0755
   - name: install unit files
-    copy:
-      src: "{{ item }}.service"
-      dest: "/etc/systemd/system/{{ item }}.service"
-      owner: root
-      group: root
-      mode: 0544
+    file:
+      src: "/home/vmagro/.dotfiles/systemd/{{ item }}.service"
+      dest: "/home/vmagro/.config/systemd/user/{{ item }}.service"
+      owner: vmagro
+      group: vmagro
+      state: link
     with_items:
       - pulseaudio
+      - lightlocker
+      - xscreensaver
   - name: enable and start services
+    become: yes
+    become_user: vmagro
     systemd:
       daemon_reload: yes
       enabled: yes
       state: started
       name: "{{ item }}"
+      user: yes
     with_items:
       - pulseaudio
+      - xscreensaver

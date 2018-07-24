@@ -288,23 +288,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
-
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
@@ -339,7 +322,9 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
     awful.key({}, "XF86AudioPlay", function () awful.util.spawn("spoticli play") end),
     awful.key({}, "XF86AudioNext", function () awful.util.spawn("spoticli next") end),
-    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("spoticli prev") end)
+    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("spoticli prev") end),
+
+    awful.key({ modkey }, "l", function () awful.util.spawn("xscreensaver-command -lock") end)
 )
 
 clientkeys = gears.table.join(
@@ -564,4 +549,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- remap caps -> escape, windows -> ctrl, alt -> windows
-awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win -option altwin:ctrl_win")
+-- awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win -option altwin:ctrl_win")
+awful.util.spawn("/usr/bin/setxkbmap -option caps:escape -option altwin:swap_alt_win")
+-- start compton for compositing to stop tears etc
+awful.util.spawn("/usr/bin/compton -b -c --backend glx --vsync opengl-swc")
