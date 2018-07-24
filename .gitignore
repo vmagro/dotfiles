@@ -2,3 +2,4 @@ zsh/zshrc.local
 nvim/.netrwhist
 *.retry
 tmpnotes.txt
+*.swp
