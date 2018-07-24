@@ -1,3 +1,30 @@
-[submodule "zsh/zsh-autosuggestions"]
-	path = zsh/zsh-autosuggestions
+[submodule "prezto/modules/autosuggestions/external"]
+	path = prezto/modules/autosuggestions/external
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "modules/history-substring-search/external"]
+	path = prezto/modules/history-substring-search/external
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "prezto/modules/syntax-highlighting/external"]
+	path = prezto/modules/syntax-highlighting/external
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "prezto/modules/completion/external"]
+	path = prezto/modules/completion/external
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "prezto/modules/prompt/external/powerline"]
+	path = prezto/modules/prompt/external/powerline
+	url = https://github.com/davidjrice/prezto_powerline.git
+[submodule "prezto/modules/prompt/external/agnoster"]
+	path = prezto/modules/prompt/external/agnoster
+	url = https://github.com/agnoster/agnoster-zsh-theme.git
+[submodule "prezto/modules/prompt/functions/pure"]
+	path = prezto/modules/prompt/external/pure
+	url = https://github.com/sindresorhus/pure.git
+[submodule "prezto/modules/fasd/external"]
+	path = prezto/modules/fasd/external
+	url = https://github.com/clvv/fasd.git
+[submodule "prezto/modules/prompt/external/async"]
+	path = prezto/modules/prompt/external/async
+	url = https://github.com/mafredri/zsh-async.git
+[submodule "prezto/modules/prompt/external/powerlevel9k"]
+	path = prezto/modules/prompt/external/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git

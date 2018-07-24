@@ -58,6 +58,21 @@
     - { src: 'spoticli', dst: 'bin/spoticli' }
     - { src: 'xscreensaver', dst: '.xscreensaver' }
 
+- name: prezto symlinks
+  file:
+    src: '/home/vmagro/.dotfiles/prezto/{{ item.src }}'
+    dest: '/home/vmagro/{{ item.dst }}'
+    owner: vmagro
+    group: vmagro
+    state: link
+  with_items:
+    - { src: '', dst: '.zprezto' }
+    - { src: 'runcoms/zshrc', dst: '.zshrc' }
+    - { src: 'runcoms/zlogin', dst: '.zlogin' }
+    - { src: 'runcoms/zlogout', dst: '.zlogout' }
+    - { src: 'runcoms/zpreztorc', dst: '.zpreztorc' }
+    - { src: 'runcoms/zshenv', dst: '.zshenv' }
+
 - name: install vimplug
   become: true
   become_user: vmagro
