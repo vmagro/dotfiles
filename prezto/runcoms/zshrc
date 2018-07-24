@@ -18,3 +18,6 @@ setopt share_history
 
 alias vim=nvim
 export EDITOR=nvim
+
+# reverse incremental search with ctrl-r
+bindkey '^R' history-incremental-search-backward
