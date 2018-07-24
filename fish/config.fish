@@ -17,7 +17,7 @@ set PATH $HOME/bin $PATH
 alias :q=exit
 
 # TODO: only enable this on fb devserver
-set -l fb "true"
+# set -l fb "true"
 # golang at fb
 if [ $fb ]
    set -x GOPATH "/data/users/$USER/gopaths/gothrift:/data/users/$USER/gopaths/godeps:/data/users/$USER/gopaths/gofbcode:$HOME/go/"
