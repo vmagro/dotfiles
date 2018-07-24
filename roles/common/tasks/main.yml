@@ -49,7 +49,7 @@
     state: link
   with_items:
     - { src: 'nvim/', dst: '.config/nvim' }
-    - { src: 'fish/', dst: '.config/fish' }
+    - { src: 'zsh/zshrc', dst: '.zshrc' }
     - { src: 'awesome/', dst: '.config/awesome' }
     - { src: 'tmux.conf', dst: '.tmux.conf' }
     - { src: 'xinitrc', dst: '.xinitrc' }
