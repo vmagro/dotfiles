@@ -19,11 +19,18 @@ setopt share_history
 alias vim=nvim
 export EDITOR=nvim
 
-# reverse incremental search with ctrl-r
-bindkey '^R' history-incremental-search-backward
+# launch fzf history search with ctrl-r
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+  bindkey '^R' fzf-history-widget
+else
+  # else fallback to reverse-incremental-search
+  bindkey '^R' history-incremental-search-backwards
+fi
 
 # accept suggestion with ctrl-n
 bindkey '^N' autosuggest-accept
 
 # some useful aliases
 alias :q=exit
+
