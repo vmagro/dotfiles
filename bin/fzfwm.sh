@@ -49,7 +49,7 @@ function list_dir {
     # try myles first
     if command -v myles > /dev/null; then
       log "using myles"
-      myles --list --limit 100000 --query "$relative" --json | jq -r '.results | .[] | .path' | grep -oP "^$relative\K.*"
+      myles --list --limit 1000000 --query "$relative" --json | jq -r '.results | .[] | .path' | grep -oP "^$relative\K.*"
       popd > /dev/null
       return
     fi
