@@ -34,3 +34,4 @@ bindkey '^N' autosuggest-accept
 # some useful aliases
 alias :q=exit
 
+alias warmup="hg up remote/fbcode/warm"
