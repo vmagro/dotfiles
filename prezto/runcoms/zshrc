@@ -31,6 +31,9 @@ fi
 # accept suggestion with ctrl-n
 bindkey '^N' autosuggest-accept
 
+# add ~/bin to PATH
+export PATH="$HOME/bin:$PATH"
+
 # some useful aliases
 alias :q=exit
 
