@@ -18,6 +18,7 @@ setopt share_history
 
 alias vim=nvim
 export EDITOR=nvim
+export VISUAL="$EDITOR"
 
 # launch fzf history search with ctrl-r
 if [ -f ~/.fzf.zsh ]; then
