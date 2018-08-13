@@ -15,6 +15,7 @@ Plug 'agude/vim-eldar'
 
 " python tools
 Plug 'zchee/deoplete-jedi' " autocomplete
+Plug 'vim-python/python-syntax' " better syntax highlighting
 
 " golang tools
 Plug 'fatih/vim-go'
@@ -91,8 +92,11 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " enable deoplete
 let g:deoplete#enable_at_startup = 1
-
 " end deoplete
+
+" python stuff
+" syntax highlighting
+let g:python_highlight_all = 1
 
 " enable neomake automatic operation
 " When writing a buffer.
@@ -117,6 +121,7 @@ endif
 
 " make fzf use watchman which gives a huge speed boost
 nnoremap <silent> <c-p> :call fzf#run({'source': '~/bin/fzfwm', 'sink': 'e'})<CR>
+nnoremap <silent> <c-t> :Ag<CR>
 
 " FB specific
 " set configs to use python syntax
