@@ -35,7 +35,7 @@ function watchman_list {
 
 function list_dir {
   pushd "$1" > /dev/null
-  dir=$(pwd)
+  dir=$(realpath $(pwd))
   log "listing files in $dir"
   # if we're in an hg repo we can be faster
   if root=$(hg root 2> /dev/null); then
@@ -49,7 +49,11 @@ function list_dir {
     # try myles first
     if command -v myles > /dev/null; then
       log "using myles"
+      # with the release version of myles, we have to use json to not mess around with relative paths
       myles --list --limit 1000000 --query "$relative" --json | jq -r '.results | .[] | .path' | grep -oP "^$relative\K.*"
+      # with my fixes myles will output relative paths correctly
+      # myles --list --limit 10000 --query "$relative" | sed "s/^.*'${relative//\//\\/}'\(.*\)/\1/"
+      # myles --list --limit 10000 --query "$relative" | sed 's/^.*fbcode\/kernel\/\(.*\)/\1/'
       popd > /dev/null
       return
     fi
