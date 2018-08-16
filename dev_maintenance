@@ -1,0 +1,68 @@
+#!/bin/bash
+# vim: set syntax=sh:
+set -e
+
+# Script runs periodically to make sure my dev environment is up to date
+
+update_repo () {
+  pushd "$HOME/$repo" > /dev/null
+  echo "Updating repo $repo"
+  
+  # we can only ever have uncommitted changes on the current bookmark
+  must_unshelve=""
+  devmaint_sha="$(hg id -i)"
+  hg book -f "_devmaint"
+  if hg shelve; then
+    must_unshelve="_devmaint"
+    echo "$must_unshelve had uncommitted changes, shelving them"
+  fi
+
+  echo "Updating master"
+  hg up "master"
+  arc pull
+  
+  # cleanup to avoid arc pull on unnecessary bookmarks
+  echo "y" | arc feature --cleanup
+ 
+  # make sure that the bookmark still exists
+  hg book -f --rev "$devmaint_sha" "_devmaint" 
+
+  for book in $(hg bookmark --quiet); do
+    echo "Updating $book"
+    hg up "$book"
+    dest="master"
+    if [ "$repo" = "fbcode" ]; then
+      dest="remote/fbcode/warm"
+    fi
+    hg rebase --dest "$dest"
+  done
+
+  if [[ -n "$must_unshelve" ]]; then
+    echo "Unshelving changes made to $must_unshelve"
+    hg up "$must_unshelve"
+    hg unshelve
+  fi
+
+  echo "Returning to _devmaint / master"
+  hg up "_devmaint" || hg up master
+  hg book -d "_devmaint" || true
+
+  popd > /dev/null
+}
+
+# running arc pull takes a long time if you let it go too long
+# for repo in "www" "fbcode" "configerator" "opsfiles"; do
+for repo in "$@"; do
+  update_repo "$repo"
+done
+
+# make sure we upload new chef cookbooks to taste-tester so it doesn't take forever
+pushd "$HOME/opsfiles" > /dev/null
+echo Uploading chef cookbooks to taste-tester
+taste-tester upload
+popd > /dev/null
+
+# run a buck build in fbcode to make sure it downloads the latest version
+pushd "$HOME/fbcode" > /dev/null
+buck build //kernel/klownfish:kf || true
+popd > /dev/null

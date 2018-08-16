@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/home/vmagro/bin/dev_maintenance
+ExecStart=/home/vmagro/bin/dev_maintenance fbcode www configerator opsfiles
 Type=oneshot
 OnFailure=status-email-vmagro@%n.service
