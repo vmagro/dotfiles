@@ -64,5 +64,7 @@ popd > /dev/null
 
 # run a buck build in fbcode to make sure it downloads the latest version
 pushd "$HOME/fbcode" > /dev/null
-buck build //kernel/klownfish:kf || true
+# make sure all the caches are warmed up
+buck build //kernel/... || true
+# buck build //kernel/klownfish/... || true
 popd > /dev/null
