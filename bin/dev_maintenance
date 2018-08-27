@@ -47,6 +47,18 @@ update_repo () {
   hg up "_devmaint" || hg up master
   hg book -d "_devmaint" || true
 
+
+  if [ "$repo" = "fbcode" ]; then
+    # make sure all the caches are warmed up
+    buck build //kernel/... || true
+  fi
+  
+  if [ "$repo" = "opsfiles" ]; then
+    # make sure we upload new chef cookbooks to taste-tester so it's fast
+    echo Uploading chef cookbooks to taste-tester
+    taste-tester upload
+  fi
+
   popd > /dev/null
 }
 
@@ -55,16 +67,3 @@ update_repo () {
 for repo in "$@"; do
   update_repo "$repo"
 done
-
-# make sure we upload new chef cookbooks to taste-tester so it doesn't take forever
-pushd "$HOME/opsfiles" > /dev/null
-echo Uploading chef cookbooks to taste-tester
-taste-tester upload
-popd > /dev/null
-
-# run a buck build in fbcode to make sure it downloads the latest version
-pushd "$HOME/fbcode" > /dev/null
-# make sure all the caches are warmed up
-buck build //kernel/... || true
-# buck build //kernel/klownfish/... || true
-popd > /dev/null
