@@ -35,6 +35,10 @@ update_repo () {
       dest="remote/fbcode/warm"
     fi
     hg rebase --dest "$dest"
+    if [ "$repo" = "configerator" ]; then
+      # try to rebuild, but don't blow up if it fails
+      (arc build && hg amend --rebase) || true
+    fi
   done
 
   if [[ -n "$must_unshelve" ]]; then
@@ -50,7 +54,7 @@ update_repo () {
 
   if [ "$repo" = "fbcode" ]; then
     # make sure all the caches are warmed up
-    buck build //kernel/... || true
+    buck build //kernel/kerneltest/... //kernel/klownfish/... || true
   fi
   
   if [ "$repo" = "opsfiles" ]; then
