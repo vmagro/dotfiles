@@ -1,0 +1,52 @@
+import sys
+import os
+
+try:
+    # ifbpy has these built in
+    from bamboo_lite import presto, hive, scuba
+except:
+    # Anaconda does not, so let's add them
+    if os.path.isdir(os.path.expanduser("~/fbsource/")):
+        _fbsource_path = os.path.expanduser("~/fbsource/")
+    elif os.path.isdir(os.path.expanduser("~/local/fbsource/")):
+        _fbsource_path = os.path.expanduser("~/local/fbsource/")
+
+    sys.path = [
+        (_fbsource_path + "fbcode/analytics/utils"),
+        (_fbsource_path + "fbcode/analytics/ml"),
+        (_fbsource_path + "fbcode/analytics/")] + sys.path
+    try:
+        # ifbpy has these built in, Anaconda does not
+        from bamboo_lite import presto, hive, scuba
+    except:
+        pass
+
+# Only automatically import graphing libraries in a Notebook shell
+if type(get_ipython()).__name__ == "ZMQInteractiveShell":
+    import seaborn as sns
+
+    sns.set_style("darkgrid")
+
+    plot_colors = [
+        "#1F77B4", "#FF7F0E", "#2CA02C", "#D62728", "#9467BD",
+        "#8C564B", "#CFECF9", "#7F7F7F", "#BCBD22", "#17BECF"]
+    sns.set_palette(plot_colors)
+
+    rc = {"figure.figsize": (10, 7),
+          "lines.linewidth": 1.5}
+
+    sns.set(font_scale=1.25, rc=rc)
+
+    import matplotlib.pyplot as plt
+    %matplotlib inline
+
+import numpy as np
+from scipy import stats
+import statsmodels.api as sm
+
+import pandas as pd
+pd.options.display.max_columns = 100
+to_timestamp = lambda x: pd.Timestamp(np.datetime64(x))
+
+import warnings
+warnings.filterwarnings("ignore")

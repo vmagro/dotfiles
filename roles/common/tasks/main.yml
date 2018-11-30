@@ -57,6 +57,7 @@
     - { src: 'Xresources', dst: '.Xresources' }
     - { src: 'spoticli', dst: 'bin/spoticli' }
     - { src: 'xscreensaver', dst: '.xscreensaver' }
+    - { src: 'ipython', dst: '.ipython' }
 
 - name: prezto symlinks
   file:
