@@ -3,3 +3,5 @@ nvim/.netrwhist
 *.retry
 tmpnotes.txt
 *.swp
+
+.installed
