@@ -43,3 +43,5 @@ export GOPATH="/data/users/vmagro/gopaths/gobuck:/data/users/vmagro/gopaths/gode
 export GOROOT="/data/users/vmagro/gopaths/goroot"
 export PATH="/data/users/vmagro/fbsource/fbcode/third-party-buck/platform007/tools/go-tools/bin:$PATH"
 export PATH="/data/users/vmagro/gopaths/goroot/bin:$PATH"
+
+source /usr/facebook/ops/rc/master.zshrc

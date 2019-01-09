@@ -10,7 +10,6 @@ update_repo () {
   
   # we can only ever have uncommitted changes on the current bookmark
   must_unshelve=""
-  devmaint_sha="$(hg id -i)"
   hg book -f "_devmaint"
   if hg shelve; then
     must_unshelve="_devmaint"
@@ -25,21 +24,28 @@ update_repo () {
   echo "y" | arc feature --cleanup
  
   # make sure that the bookmark still exists
-  hg book -f --rev "$devmaint_sha" "_devmaint" 
+  hg book -f "_devmaint" 
 
-  for book in $(hg bookmark --quiet); do
-    echo "Updating $book"
-    hg up "$book"
+  heads=$(hg heads --template "{node} {author} {desc|firstline}\n" | grep "vmagro@fb.com" | cut -d' ' -f1)
+  # find all the base revisions at once so they can be sorted and duplicates removed
+  bases=$(echo "$heads" | xargs -I% hg log --template "{node}\n" --rev 'first(::% & draft())')
+  # remove duplicates so that we only rebase each stack once
+  bases=$(echo "$bases" | sort --unique)
+  for base in $bases; do
+    echo updating "$(hg log --template "{desc|firstline}\n" --rev "$base")"
     dest="master"
     if [ "$repo" = "fbcode" ]; then
       dest="remote/fbcode/warm"
     fi
-    hg rebase --dest "$dest"
+    # do the rebase, abort on failure so we still move the rest of the heads forward
+    hg rebase --source "$base" --dest "$dest" || hg rebase --abort
     if [ "$repo" = "configerator" ]; then
       # try to rebuild, but don't blow up if it fails
-      (arc build && hg amend --rebase) || true
+      (arc build && hg amend --rebase) || hg revert --all
     fi
   done
+
+  hg purge
 
   if [[ -n "$must_unshelve" ]]; then
     echo "Unshelving changes made to $must_unshelve"
@@ -50,6 +56,7 @@ update_repo () {
   echo "Returning to _devmaint / master"
   hg up "_devmaint" || hg up master
   hg book -d "_devmaint" || true
+
 
 
   if [ "$repo" = "fbcode" ]; then
@@ -66,8 +73,6 @@ update_repo () {
   popd > /dev/null
 }
 
-# running arc pull takes a long time if you let it go too long
-# for repo in "www" "fbcode" "configerator" "opsfiles"; do
 for repo in "$@"; do
   update_repo "$repo"
 done
