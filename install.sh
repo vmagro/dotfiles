@@ -18,7 +18,7 @@ ln -f -s "$DIR/prezto/runcoms/zlogout" "$HOME/.zlogout"
 ln -f -s "$DIR/prezto/runcoms/zpreztorc" "$HOME/.zpreztorc"
 ln -f -s "$DIR/prezto/runcoms/zshenv" "$HOME/.zshenv"
 
-rm "$DIR/nvim/nvim"
-rm "$DIR/prezto/prezto"
+rm -f "$DIR/nvim/nvim"
+rm -f "$DIR/prezto/prezto"
 
 touch "$DIR/.installed"
